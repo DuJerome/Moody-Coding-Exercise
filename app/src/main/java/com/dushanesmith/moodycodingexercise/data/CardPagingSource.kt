@@ -5,6 +5,9 @@ import androidx.paging.PagingState
 import com.dushanesmith.moodycodingexercise.data.model.Card
 import com.dushanesmith.moodycodingexercise.data.model.api.remote.PostApi
 
+/*
+Paging3 paging source used to retrieve the card data and paginate
+ */
 class CardPagingSource(
     private val postApi: PostApi
 ) : PagingSource<Int, Card>() {
@@ -16,7 +19,6 @@ class CardPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Card> {
-        val page = params.key ?: 1
         return try {
             val cardsResponse = postApi.getPostData().page.cards
 

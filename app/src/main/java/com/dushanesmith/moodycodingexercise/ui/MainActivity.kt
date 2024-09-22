@@ -1,6 +1,5 @@
-package com.dushanesmith.moodycodingexercise
+package com.dushanesmith.moodycodingexercise.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.dushanesmith.moodycodingexercise.ui.theme.MoodyCodingExerciseTheme
 import com.dushanesmith.moodycodingexercise.ui.theme.Post
@@ -35,6 +33,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/*
+Here we pass MainViewModel to retrieve the data and context for the coil AsyncImage Composable
+Composable displaying the list of Posts
+ */
 @Composable
 fun PostList(mainViewModel: MainViewModel, context: Context) {
     val postListData = mainViewModel.getCardData().collectAsLazyPagingItems()

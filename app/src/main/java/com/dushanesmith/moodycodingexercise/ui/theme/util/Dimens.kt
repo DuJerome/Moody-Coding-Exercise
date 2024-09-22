@@ -2,6 +2,9 @@ package com.dushanesmith.moodycodingexercise.ui.theme.util
 
 import androidx.compose.ui.unit.dp
 
+/*
+Dimensions used in different views
+ */
 object dimens {
 
     val smallPadding1 = 6.dp

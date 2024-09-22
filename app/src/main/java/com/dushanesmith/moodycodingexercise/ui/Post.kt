@@ -28,6 +28,10 @@ import com.dushanesmith.moodycodingexercise.data.model.Card
 import com.dushanesmith.moodycodingexercise.ui.theme.util.dimens.mediumPadding1
 import com.dushanesmith.moodycodingexercise.ui.theme.util.dimens.smallPadding2
 
+/*
+Here is a modular Post composable that accommodates all different types of post by conditional
+composition
+ */
 @Composable
 fun Post(card: Card?, context: Context) {
     if (card?.card_type == "text") {
@@ -73,11 +77,16 @@ fun Post(card: Card?, context: Context) {
             )
         }
     } else if (card?.card_type == "image_title_description") {
-        val height = if (context.resources.configuration.orientation == 1) (card.card.image.size.height*.4).dp else (card.card.image.size.height*.7).dp
-        val width = if (context.resources.configuration.orientation == 1) (card.card.image.size.width*.4).dp else (card.card.image.size.width*.7).dp
+        //dynamically setting the height to a fraction of the original
+        val height =
+            if (context.resources.configuration.orientation == 1) (card.card.image.size.height * .4).dp else (card.card.image.size.height * .7).dp
+        val width =
+            if (context.resources.configuration.orientation == 1) (card.card.image.size.width * .4).dp else (card.card.image.size.width * .7).dp
 
+        //Box because it allows for a overlap of content
         Box(
-            modifier = Modifier.wrapContentHeight()
+            modifier = Modifier
+                .wrapContentHeight()
                 .fillMaxWidth()
                 .padding(smallPadding2)
                 .clip(RoundedCornerShape(smallPadding2)),
